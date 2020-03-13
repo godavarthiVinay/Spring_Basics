@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsd="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsd:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context-4.2.xsd"
+>
+    <bean id="dbProperties" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="location" value="classpath:project.properties"/>
+    </bean>
+    <bean id="test" class="beans.Test">
+        <property name="driverName" value="${driverName}"/>
+        <property name="url" value="${url}"/>
+        <property name="databaseName" value="${databaseName}"/>
+        <property name="userName" value="${username}"/>
+        <property name="password" value="${password}"/>
+    </bean>
+
+
+
+</beans>

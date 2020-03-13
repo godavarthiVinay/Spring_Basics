@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+		http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd"
+>
+    <bean id="model" class="beans.Model" >
+        <constructor-arg value="Audi A4 sedan"  index="0" type="java.lang.String"/>
+        <constructor-arg value="2012" index="1" type="java.lang.Long" />
+    </bean>
+    <bean id="car" class="beans.Car">
+        <property name="carName" value="Audi"/>
+        <property name="carmodal" ref="model"/>
+        <property name="otherModelsNames">
+            <list>
+                <value>Audi A3 Sedan</value>
+                <value>Audi A3 Cabriolet</value>
+                <value>Audi A5 Sportback</value>
+                <value>Audi RS5 Coupe</value>
+                <value>Audi A6</value>
+                <value>Audi Q3</value>
+                <value>Audi Q6</value>
+            </list>
+        </property>
+    </bean>
+
+
+
+
+</beans>

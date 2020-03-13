@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd"
+>
+
+
+
+    <!--Example for second method test-->
+    <bean id="test" class="beans.Test">
+        <property name="username" value="${username}"/>
+    </bean>
+
+    <!--Second method (new approach) ==> Property key names can use in this file directly in this approach (better aprroach) -->
+    <bean id="dbproperties"  class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="location" value="classpath:drivers.properties"></property>
+    </bean>
+
+
+    <!-- First Method (old approach)-->
+    <bean id="dataBaseProperties" class="beans.DataBaseProperties">
+        <property name="driver">
+            <util:properties location="classpath:drivers.properties"/>
+        </property>
+
+    </bean>
+
+
+
+
+
+</beans>

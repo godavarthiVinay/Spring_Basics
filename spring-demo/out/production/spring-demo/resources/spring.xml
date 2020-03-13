@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+		http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd"
+>
+
+    <bean id="t" class="beans.Test" />                            <!--(by default its singlton)create only one object for multiple request-->
+    <!--<bean id="t" class="beans.Test" scope="prototype"/>-->    <!--create multiple Objects for each request-->
+
+
+
+
+    <!--DEPENDENCY INJECTION using Setter method starts-->
+    <bean id="DI_setter" class="beans.DI.DI_Setter" >
+        <property name="username" value="vinay"/>    <!--value attribute for primitive values-->
+        <property name="age" >
+            <value>23</value>
+        </property>
+    </bean>
+
+    <!--DEPENDENCY INJECTION using Setter method ENDS-->
+
+
+
+
+
+    <!--DEPENDENCY INJECTION using constructor method starts-->
+
+
+    <bean id="DI_constructor" class="beans.DI.DI_COnstructor" >
+        <constructor-arg value="23" index="1" type="java.lang.Integer"/>
+        <constructor-arg value="vinay" index="0" type="java.lang.String"/>
+        <constructor-arg value="vinnu" index="0" type="java.lang.String"/>
+
+    </bean>
+
+
+    <!--DEPENDENCY INJECTION using constructor method ENDS-->
+</beans>

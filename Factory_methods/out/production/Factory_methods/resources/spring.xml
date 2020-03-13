@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context-4.0.xsd"
+>
+    <bean id="car" class="beans.CarSingleton" factory-method="getInstance"/>
+    <bean id="calender" class="java.util.Calendar" factory-method="getInstance"/>
+
+<!--Approach -1 :-->
+    <!-- FactoryClass Static method Approach starts-->
+    <bean id="ss" class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+        <property name="staticMethod" value="beans.CarFactoryStaticApproach.setCarname"/>
+        <property name="arguments" >
+            <list>
+                <value>beans.Hundai</value>
+            </list>
+        </property>
+    </bean>
+    <bean id="CarFactoryStaticApproach" class="beans.CarFactoryStaticApproach" factory-method="getInstance"/>
+
+
+
+<!--Approach -2 :-->
+    <!--FactoryClass Static method Approach ends-->
+
+    <!--FactoryClass Instance method Approach starts-->
+    <bean id="CarFactoryInstanceApproach" class="beans.CarFactoryInstanceApproach">
+        <!--<property name="carname" value="beans.Audi"/>-->
+        <property name="carname" value="beans.Hundai"/>
+    </bean>
+    <bean id="cf" factory-bean="CarFactoryInstanceApproach" factory-method="getInstance"/>
+
+
+    <!--FactoryClass Instance method Approach ends-->
+
+<!--Approach -3 :-->
+    <!--Spring Approach-->
+    <bean id="sp" class="beans.SpringApprachFactoryBean">
+        <property name="carname" value="beans.Audi"/>
+    </bean>
+
+
+
+
+
+</beans>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+>
+    <bean id="dbproperties"  class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="location" value="classpath:details.properties"></property>
+    </bean>
+
+    <bean id="engine" class="beans.Engine">
+        <property name="modelNo" value="${carEngine}"/>
+
+    </bean>
+    <bean id="engine1" class="beans.Engine" autowire-candidate="false">
+        <property name="modelNo" value="Audi A5 matrix"/>
+    </bean>
+    <bean id="car" class="beans.Car" autowire="byType">
+        <property name="carName" value="Audi"/>
+    </bean>
+
+</beans>

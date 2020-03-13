@@ -1,0 +1,32 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context-4.0.xsd"
+
+>
+    <context:annotation-config/>
+    <bean id="DBproperties" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="location" value="classpath:project.properties"/>
+    </bean>
+
+    <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="${db.driverClassName}"/>
+        <property name="url" value="${db.url}"/>
+        <property name="username" value="${db.username}"/>
+        <property name="password" value="${db.password}"/>
+        <property name="initialSize" value="${db.pool.initialsize}"/>
+        <property name="maxTotal" value="${db.pool.maxtotal}"/>
+    </bean>
+
+    <bean id="registrationService" class="com.info.services.RegistrationServiceImpl">
+        <property name="registrationDao" ref="registrationDao"/>
+    </bean>
+    <bean id="registrationDao" class="com.info.dao.RegistrationDaoImpl">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+
+</beans>
